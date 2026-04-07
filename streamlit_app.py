@@ -22,10 +22,165 @@ if not os.environ.get("GOOGLE_API_KEY"):
 # ---------------------------- #
 # Frontend Configuration
 # ---------------------------- #
-st.set_page_config(page_title="RAG Document Assistant", layout="centered")
+st.set_page_config(page_title="RAG Document Assistant", layout="centered", page_icon="✨")
+
+# High-End Premium UI/UX Implementation (CSS Injection)
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+/* Base Font & Theme Configuration */
+html, body, [class*="css"] {
+    font-family: 'Outfit', sans-serif !important;
+}
+
+/* Deep Black Superhero Theme */
+.stApp, .appview-container, .main {
+    background: #050505 !important;
+}
+
+/* Floating Superhero Bubbles Container */
+.bubbles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none; /* Ignore clicks */
+}
+
+/* Base style for individual bubbles */
+.bubble {
+    position: absolute;
+    bottom: -150px;
+    opacity: 0;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.15));
+    animation: floatUp infinite ease-in;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.6; }
+    85% { opacity: 0.6; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* Glassmorphism Effect for the Main Container */
+.main .block-container {
+    position: relative;
+    z-index: 10;
+    background: rgba(25, 25, 25, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 3rem !important;
+    margin-top: 3rem;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    animation: containerEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+@keyframes containerEntrance {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Stunning Title Glow & Animation */
+h1 {
+    text-align: center;
+    background: linear-gradient(135deg, #c084fc, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 3rem !important;
+    margin-bottom: 0.5rem !important;
+    animation: glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px rgba(139, 92, 246, 0.1); }
+    to { text-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+}
+
+/* Interactive File Uploader */
+[data-testid="stFileUploadDropzone"] {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 2px dashed rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+[data-testid="stFileUploadDropzone"]:hover {
+    background: rgba(139, 92, 246, 0.05) !important;
+    border-color: #c084fc !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+/* Input Fields */
+input {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+}
+
+input:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2) !important;
+}
+
+/* Gradient Action Buttons with Zoom & Glow */
+[data-testid="baseButton-secondary"] {
+    background: linear-gradient(135deg, #6366f1, #0ea5e9) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 12px !important;
+    padding: 0.5rem 2rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: 100% !important;
+}
+
+[data-testid="baseButton-secondary"]:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Hide Unnecessary Streamlit Elements */
+header { visibility: hidden; }
+#MainMenu { visibility: hidden; }
+footer { visibility: hidden; }
+</style>
+""", unsafe_allow_html=True)
+
+import random
+
+# Generate 50 Floating Superhero Bubbles
+emojis = ["🦸‍♂️", "🦇", "🕷️", "🤖", "⚡", "🛡️", "💥", "🦸‍♀️"]
+bubbles_html = '<div class="bubbles-container">'
+for _ in range(50):
+    emoji = random.choice(emojis)
+    left = random.uniform(0, 100)
+    size = random.uniform(20, 55)
+    anim_duration = random.uniform(10, 25)
+    anim_delay = random.uniform(0, 20)
+    
+    bubbles_html += f'<div class="bubble" style="left: {left}%; font-size: {size}px; animation-duration: {anim_duration}s; animation-delay: {anim_delay}s;">{emoji}</div>'
+bubbles_html += '</div>'
+
+# Inject bubbles into the background securely
+st.markdown(bubbles_html, unsafe_allow_html=True)
 
 # Title of the Streamlit App
-st.title("RAG Document Assistant")
+st.markdown("<h1 style='position: relative; z-index: 10;'>✨ Nexus RAG Assistant</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 2rem; position: relative; z-index: 10;'>Unlock knowledge from your documents using AI and Embeddings</p>", unsafe_allow_html=True)
 
 # Initialize session state variables so the app remembers state between user interactions
 if "qa_chain" not in st.session_state:

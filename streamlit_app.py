@@ -14,10 +14,14 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 # Load environment variables (pulls GOOGLE_API_KEY from .env)
 load_dotenv()
 
-# Verify that the GOOGLE_API_KEY is present
+# Verify securely that the GOOGLE_API_KEY is present
 if not os.environ.get("GOOGLE_API_KEY"):
-    st.error("GOOGLE_API_KEY missing from environment. Please add it to your .env file.")
-    st.stop()
+    # Streamlit Cloud deployment fail-safe reading Native Secrets
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    else:
+        st.error("GOOGLE_API_KEY missing from environment. Please configure it in your Streamlit Cloud Secrets or local .env file.")
+        st.stop()
 
 # ---------------------------- #
 # Frontend Configuration

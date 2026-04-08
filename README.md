@@ -1,4 +1,4 @@
-# RAG System
+<img width="1680" height="922" alt="Screenshot 2026-04-08 at 6 06 41 PM" src="https://github.com/user-attachments/assets/c2e654e3-0adb-409b-82be-e85383905512" /># RAG System
 
 A basic framework for setting up a Retrieval-Augmented Generation (RAG) system.
 
@@ -16,5 +16,6 @@ A basic framework for setting up a Retrieval-Augmented Generation (RAG) system.
    ```
 4. Place sample PDFs into `data/`.
 
-   ![Uploading Screenshot 2026-04-08 at 6.06.41 PM.png…]()
+<img width="1680" height="922" alt="Screenshot 2026-04-08 at 6 06 41 PM" src="https://github.com/user-attachments/assets/cdd6aeb4-5c62-44f1-8b4d-9b5335f9e926" />
+
 

@@ -20,7 +20,12 @@ if not os.environ.get("GOOGLE_API_KEY"):
     if "GOOGLE_API_KEY" in st.secrets:
         os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
     else:
-        st.error("GOOGLE_API_KEY missing from environment. Please configure it in your Streamlit Cloud Secrets or local .env file.")
+        # Debugging hook: print out what secrets were actually detected
+        try:
+            available_secrets = list(st.secrets.keys())
+        except Exception:
+            available_secrets = "Error parsing secrets"
+        st.error(f"GOOGLE_API_KEY missing from environment. Detected Secret Keys: {available_secrets}. Ensure you configured it securely in your Streamlit Cloud Settings -> Secrets.")
         st.stop()
 
 # ---------------------------- #

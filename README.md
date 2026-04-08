@@ -15,3 +15,6 @@ A basic framework for setting up a Retrieval-Augmented Generation (RAG) system.
    pip install -r requirements.txt
    ```
 4. Place sample PDFs into `data/`.
+
+   ![Uploading Screenshot 2026-04-08 at 6.06.41 PM.png…]()
+

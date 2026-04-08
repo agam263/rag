@@ -16,6 +16,3 @@ A basic framework for setting up a Retrieval-Augmented Generation (RAG) system.
    ```
 4. Place sample PDFs into `data/`.
 
-<img width="1680" height="922" alt="Screenshot 2026-04-08 at 6 06 41 PM" src="https://github.com/user-attachments/assets/cdd6aeb4-5c62-44f1-8b4d-9b5335f9e926" />
-
-
